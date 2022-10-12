@@ -8,6 +8,9 @@ import { MenuItem, PrimeIcons} from 'primeng/api';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
 
   items: MenuItem[] = [
     {
