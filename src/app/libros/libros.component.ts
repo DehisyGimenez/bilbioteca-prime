@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Message } from 'primeng/api';
 import { Libro } from '../interfaces/libro.interface';
+import { FormularioLibrosComponent } from '../libro/formulario-libros/formulario-libros.component';
 import { LibrosService } from '../servicios/libros.service';
 
 @Component({
@@ -9,11 +10,15 @@ import { LibrosService } from '../servicios/libros.service';
   styleUrls: ['./libros.component.css']
 })
 export class LibrosComponent implements OnInit {
+
+  @ViewChild('formulario') formLibro!: FormularioLibrosComponent;
+
   listaLibros: Libro[] = []; //Aquí se guarda la lista de libros
   cargando: boolean = false; //Esta variable muestra la animacion de carga
   dialogoVisible: boolean = false; //Indica se el dialogo esta visible u oculto
 
   mensajes: Message[] = [];
+  tituloDialogo: string = 'Registrar Libro';
 
   constructor(
     private servicioLibros: LibrosService
@@ -37,7 +42,21 @@ export class LibrosComponent implements OnInit {
       }
     });
   }
-  mostrarDialogo(){
+
+  nuevo(){
+    this.tituloDialogo = 'Registrar libro';
+    this.formLibro.limpiarFormulario();
+    this.formLibro.modo = 'Registrar';
     this.dialogoVisible = true;
+  }
+
+  editar(libro: Libro){
+    this.formLibro.codigo = libro.id;
+    this.formLibro.titulo= libro.titulo;
+    this.formLibro.autor = libro.autor;
+    this.formLibro.paginas = libro.paginas;
+    this.formLibro.modo = 'Editar';
+    this.dialogoVisible = true;
+    this.tituloDialogo = "Editar libros";
   }
 }
