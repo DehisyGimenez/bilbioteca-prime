@@ -17,6 +17,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { MessageModule} from 'primeng/message';
 import { MessagesModule} from 'primeng/messages';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -39,9 +41,10 @@ import { MessagesModule} from 'primeng/messages';
     FormsModule,
     InputTextModule,
     MessageModule,
-    MessagesModule
+    MessagesModule,
+    ConfirmDialogModule
   ],
-  providers: [],
+  providers: [ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
