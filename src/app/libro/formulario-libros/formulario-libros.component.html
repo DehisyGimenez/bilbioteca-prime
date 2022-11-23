@@ -12,14 +12,17 @@
     <small *ngIf="!tituloValido" id="titulo-help" class="p-error block">Ingresar titulo del libro</small>
 </div>
 <div class="field">
-    <label for="autor">Autor:</label>
-    <input id="autor" type="text" class="w-full" [(ngModel)]="autor" pInputText
-    [ngClass]="{'ng-invalid': !autorValido, 'ng-dirty': !autorValido}">
+    <label for="autor">Autor</label>
+
+    <p-dropdown id="autor" class="w-full" styleClass="w-full" [options]="listaAutores" [(ngModel)]="idautor" optionLabel="nombre" aptionValue="id"  placeholder="Seleccionar..." [showClear]="true"></p-dropdown>
+
+    <!--<input id="autor" type="text" class="w-full" [(ngModel)]="autor" pInputText
+    [ngClass]="{'ng-invalid': !autorValido, 'ng-dirty': !autorValido}">-->
     <small *ngIf="!autorValido" id="autor-help" class="p-error block">Ingresar el autor del libro</small>
 </div>
 <div class="field">
     <label for="paginas">Páginas:</label>
-    <p-inputNumber id="paginas" class="w-full" [(ngModel)]="paginas"
+    <p-inputNumber id="paginas" styleClass="w-full" class="w-full" [(ngModel)]="paginas"
     [ngClass]="{'ng-invalid': !paginasValido, 'ng-dirty': !paginasValido}">
     ></p-inputNumber>
     <small *ngIf="!paginasValido" id="paginas-help" class="p-error block">Ingresar la cantidad de páginas del libro</small>
